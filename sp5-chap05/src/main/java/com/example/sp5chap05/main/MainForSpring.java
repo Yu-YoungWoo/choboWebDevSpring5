@@ -18,29 +18,34 @@ public class MainForSpring {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        while(true) {
-            System.out.println("명령어를 입력하세요");
-            String command = reader.readLine();
+        Client2 client2 = ctx.getBean(Client2.class);
+        client2.send();
+        ctx.close();
 
-            if(command.equalsIgnoreCase("exit")) {
-                System.out.println("종료합니다.");
-                break;
-            }
-
-            if(command.startsWith("new ")) {
-                processNewCommand(command.split(" "));
-            } else if(command.startsWith("change ")) {
-                processChangeCommand(command.split(" "));
-            } else if(command.equals("list")) {
-                processListCommand();
-            } else if(command.startsWith("info ")) {
-                processInfoCommand(command.split(" "));
-            } else if(command.equals("version")) {
-                processVersionCommand();
-            } else {
-                printHelp();
-            }
-        }
+//        while(true) {
+//            System.out.println("명령어를 입력하세요");
+//            String command = reader.readLine();
+//
+//            if(command.equalsIgnoreCase("exit")) {
+//                System.out.println("종료합니다.");
+//                break;
+//            }
+//
+//            if(command.startsWith("new ")) {
+//                processNewCommand(command.split(" "));
+//            } else if(command.startsWith("change ")) {
+//                processChangeCommand(command.split(" "));
+//            } else if(command.equals("list")) {
+//                processListCommand();
+//            } else if(command.startsWith("info ")) {
+//                processInfoCommand(command.split(" "));
+//            } else if(command.equals("version")) {
+//                processVersionCommand();
+//            } else {
+//                printHelp();
+//            }
+//        }
+//        ctx.close();
     }
 
     private static void processNewCommand(String[] arg) {
