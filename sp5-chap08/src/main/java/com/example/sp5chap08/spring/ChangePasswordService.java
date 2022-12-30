@@ -1,8 +1,14 @@
 package com.example.sp5chap08.spring;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
 public class ChangePasswordService {
+
+    @Autowired
     private MemberDao memberDao;
 
+    @Transactional
     public void changePassword(String email, String oldPwd, String newPwd) {
         // email로 해당 Member 객체 가져옴(조회)
         Member member = memberDao.selectByEmail(email);
